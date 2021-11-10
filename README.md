@@ -5,7 +5,7 @@ ikd-tree implementation on ROS by using my own pcd file.
 
 **ikd-Tree** is an incremental k-d tree designed for robotic applications. The ikd-Tree incrementally updates a k-d tree with new coming points only, leading to much lower computation time than existing static k-d trees. Besides point-wise operations, the ikd-Tree supports several features such as box-wise operations and down-sampling that are practically useful in robotic applications.
 
-But I noticed that in static situations, conventional FLANN-based search provided in PCL is more faster.
+But I noticed that **in static situations**, conventional FLANN-based search provided in PCL is faster.
 
 Please check the `pcd_demo.cpp`
 
