@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: ikd_tree_ros
+Description: Description of ikd_tree_ros
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: roscpp rospy std_msgs

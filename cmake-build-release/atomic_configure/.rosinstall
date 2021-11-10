@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/shapelim/catkin_ws/src/ikd-Tree/cmake-build-release/devel/setup.sh
