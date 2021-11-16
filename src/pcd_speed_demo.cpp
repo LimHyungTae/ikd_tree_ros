@@ -12,12 +12,11 @@
 #include <ros/ros.h>
 #include <sensor_msgs/PointCloud2.h>
 
-
 using PointType = pcl::PointXYZINormal;
 using PointVector = std::vector<PointType,Eigen::aligned_allocator<PointType>>;
 
 int main(int argc, char** argv){
-    ros::init(argc, argv, "Offline_KITTI");
+    ros::init(argc, argv, "speed_demo");
     ros::NodeHandle nh;
     ros::Publisher MapPub = nh.advertise<sensor_msgs::PointCloud2>("/map", 100);
 

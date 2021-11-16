@@ -6,7 +6,7 @@
 #include "pcl/point_types.h"
 #include "pcl/point_cloud.h"
 using PointType = pcl::PointXYZINormal;
-using PointVector = std::vector<PointType,Eigen::aligned_allocator<PointType>>;
+using PointVector = std::vector<PointType, Eigen::aligned_allocator<PointType>>;
 
 
 #define X_MAX 5.0
@@ -227,7 +227,8 @@ int main(int argc, char** argv){
             printf("Waiting to generate 4 cuboids for box-wise delete test...\n");
             generate_box_decrement(Delete_Boxes, Box_Length, Box_Num);
             t1 = chrono::high_resolution_clock::now();
-            ikd_Tree.Delete_Point_Boxes(Delete_Boxes);
+            int num_deleted = ikd_Tree.Delete_Point_Boxes(Delete_Boxes);
+            cout<<"\033[1;32m"<<num_deleted<<"\033[0m"<<endl;
             t2 = chrono::high_resolution_clock::now();            
             box_delete_counter ++;
             box_delete_duration += chrono::duration_cast<chrono::microseconds>(t2-t1).count();
@@ -276,10 +277,11 @@ int main(int argc, char** argv){
     printf("Finished %d times test\n",counter);
     printf("Average Time:\n");
     printf("Total Time is: %0.3fms\n",average_total_time/1e3);
-    printf("Point-wise Insertion (%d points): %0.3fms\n",New_Point_Num,add_time/counter);        
-    printf("Point-wise Delete (%d points):    %0.3fms\n", Delete_Point_Num,delete_time/counter);
-    printf("Box-wse Delete (%d boxes):        %0.3fms\n",Box_Num,box_delete_time/box_delete_counter);    
-    printf("Box-wse Re-insertion (%d boxes):  %0.3fms\n",Box_Num,box_add_time/box_add_counter);          
-    printf("Nearest Search (%d points):       %0.3fms\n", Search_Counter,search_time/counter);              
+    printf("Point-wise Insertion (%d points): %0.3fms\n",New_Point_Num, add_time/counter);
+    printf("Point-wise Delete (%d points):    %0.3fms\n", Delete_Point_Num, delete_time/counter);
+    printf("Box-wse Delete (%d boxes):        %0.3fms\n",Box_Num, box_delete_time/box_delete_counter);
+    printf("Box-wse Re-insertion (%d boxes):  %0.3fms\n",Box_Num, box_add_time/box_add_counter);
+    printf("Nearest Search (%d points):       %0.3fms\n", Search_Counter, search_time/counter);
+    printf("Total %d points are removed:      %0.3fms\n", removed_points.size());
     return 0;
 }
