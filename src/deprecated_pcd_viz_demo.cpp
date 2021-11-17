@@ -13,7 +13,7 @@
 #include <sensor_msgs/PointCloud2.h>
 
 
-using PointType = pcl::PointXYZ;
+using PointType = pcl::PointXYZINormal;
 using PointVector = std::vector<PointType, Eigen::aligned_allocator<PointType>>;
 
 float epsilon = 0.00000001;
@@ -69,7 +69,10 @@ int main(int argc, char **argv) {
 
     // Set box
     vector<BoxPointType> boxes;
-    PointType center_pt(100.0, 0.0, 0.0);
+    PointType center_pt;
+    center_pt.x = 100.0;
+    center_pt.y = 0.0;
+    center_pt.z = 0.0;
     generate_box(boxes, center_pt, {50.0, 50.0, 3.0});
 
     t1 = chrono::high_resolution_clock::now();

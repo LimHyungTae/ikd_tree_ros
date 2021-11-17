@@ -56,6 +56,12 @@ include_directories(
 link_directories(${PCL_LIBRARIES_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
+add_executable(delete_demo src/delete_test.cpp include/ikd_Tree.cpp)
+target_link_libraries(delete_demo ${PCL_LIBRARIES})
+
+add_executable(pcl_delete_demo src/pcd_delete_test.cpp include/ikd_Tree.cpp)
+target_link_libraries(pcl_delete_demo ${PCL_LIBRARIES})
+
 add_executable(ikd_tree_demo src/ikd_Tree_demo.cpp include/ikd_Tree.cpp)
 target_link_libraries(ikd_tree_demo ${PCL_LIBRARIES})
 
@@ -63,6 +69,6 @@ add_executable(speed_demo src/pcd_speed_demo.cpp include/ikd_Tree.cpp)
 target_link_libraries(speed_demo ${PCL_LIBRARIES} ${catkin_LIBRARIES})
 add_dependencies(speed_demo ikd_tree_ros_generate_messages_cpp)
 
-add_executable(viz_demo src/pcd_viz_demo.cpp include/ikd_Tree.cpp)
+add_executable(viz_demo src/deprecated_pcd_viz_demo.cpp include/ikd_Tree.cpp)
 target_link_libraries(viz_demo ${PCL_LIBRARIES} ${catkin_LIBRARIES})
 add_dependencies(viz_demo ikd_tree_ros_generate_messages_cpp)
